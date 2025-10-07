@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Vertical Scroll Gallery</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the seamless reading experience */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            /* Ensure there is no default body margin to start the seamless flow */
+            margin: 0; 
+            padding: 0;
+            background-color: #000; /* Use pure black for seamless transition between panels */
+        }
+
+        /* Ensure images take full width of their container and look crisp, with no border/shadow/radius */
+        .comic-panel {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Ensures centering */
+            border-radius: 0; /* CRITICAL: Removes rounded corners */
+            box-shadow: none; /* CRITICAL: Removes shadows that create visual gaps */
+            border: none; /* CRITICAL: No borders */
+        }
+
+        /* The wrapper should also have no vertical padding or margin */
+        .panel-wrapper {
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 0; /* Prevents tiny gaps caused by line heights */
+        }
+
+        /* Styling for the centered reader container */
+        .reader-container {
+            min-height: 100vh;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- Header for context - Positioned fixed to float above the content -->
+    <header class="py-3 px-4 sm:py-4 sm:px-6 fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-sm z-10 shadow-lg">
+        <div class="max-w-xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-bold text-white">Arthemis</h1>
+            <span class="text-sm text-gray-400">Just scroll</span>
+        </div>
+    </header>
+
+    <!-- Main Reader Content -->
+    <!-- Removed padding from the top of the main to allow the first image to touch the edge, 
+         but added necessary top padding to account for the fixed header height. -->
+    <main class="reader-container max-w-xl mx-auto pt-16 pb-20">
+        
+        <!-- Panel 1 -->
+        <div id="panel-1" class="panel-wrapper">
+            <img 
+                src="satu.jpg" 
+                alt="gambar satu" 
+                class="comic-panel"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x1200/27272a/7dd3fc?text=Image+Load+Error';"
+            >
+        </div>
+
+        <!-- Panel 2 -->
+        <div id="panel-2" class="panel-wrapper">
+            <img 
+                src="dua.jpg" 
+                alt="gambar 2" 
+                class="comic-panel"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x1000/27272a/7dd3fc?text=Image+Load+Error';"
+            >
+        </div>
+        
+        <!-- Panel 3 - Taller panel for dramatic effect -->
+        <div id="panel-3" class="panel-wrapper">
+            <img 
+                src="tiga.jpg" 
+                alt="gambar 3" 
+                class="comic-panel"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x1600/27272a/7dd3fc?text=Image+Load+Error';"
+            >
+        </div>
+
+        <!-- Panel 4 -->
+        <div id="panel-4" class="panel-wrapper">
+            <img 
+                src="esay.jpg"  
+                alt="gambar essay"  
+                class="comic-panel"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x900/27272a/7dd3fc?text=Image+Load+Error';"
+            >
+        </div>
+
+
+        <!-- End of Content Marker -->
+        <div class="text-center py-10 bg-black">
+            <p class="text-lg font-semibold text-gray-500 pt-6">--- Happy Hackin comrade ---</p>
+        </div>
+
+    </main>
+    
+</body>
+</html>
